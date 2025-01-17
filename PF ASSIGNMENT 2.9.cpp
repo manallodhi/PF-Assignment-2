@@ -39,5 +39,52 @@ int main()
       }
       cout << endl ;
   }
-  return 0;
+
+// Check if matrices can be compared (same dimensions)
+    if (row1 == row2 && column1 == column2)
+    {
+        cout << "The matrices can be compared." << endl;
+
+        // Check if matrices are equal
+        bool areEqual = true;
+        for (int i = 0; i < row1; i++)
+        {
+            for (int j = 0; j < column1; j++)
+            {
+                if (matrix_1[i][j] != matrix_2[i][j])
+                {
+                    areEqual = false;
+                    break;
+                }
+            }
+        }
+
+        if (areEqual)
+        {
+            cout << "The matrices are equal." << endl;
+        }
+        else
+        {
+            cout << "The matrices are not equal." << endl;
+        }
+
+        // Perform addition of matrices
+        int sumMatrix[row1][column1];
+        cout << "Sum of the matrices: " << endl;
+        for (int i = 0; i < row1; i++)
+        {
+            for (int j = 0; j < column1; j++)
+            {
+                sumMatrix[i][j] = matrix_1[i][j] + matrix_2[i][j];
+                cout << sumMatrix[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
+    else
+    {
+        cout << "The matrices cannot be compared or added because their dimensions are different." << endl;
+    }
+
+    return 0;
 }
