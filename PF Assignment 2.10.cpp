@@ -1,90 +1,40 @@
+/*check if the given matrix[3][3] is identity matrice and also
+find minimum and maximum from the matrix*/
+
 #include <iostream>
-using namespace std;
+using namespace std ;
 
-int main()
-{
-  int row1 , column1 ;
-  cout << "Input Rows and Columns of first matrix : " << endl ;
-  cin >> row1 >> column1 ;
-  int row2 , column2 ;
-  cout << "Input Rows and Columns of second matrix : " << endl ;
-  cin >> row2 >> column2 ;
-  int matrix_1[row1][column1] ;
-  cout << "Input elements in the first matrix : " << endl ;
-  for (int i = 0 ; i < row1 ; i++){
-    for (int j = 0 ; j < column1 ; j++){
-        cout << "element-[" << i << "][" << j << "] = " ;
-        cin >> matrix_1[i][j] ;
-    }
-  }
-  int matrix_2[row2][column2] ;
-  cout << "Input elements in the second matrix : " << endl ;
-  for (int i = 0 ; i < row2 ; i++){
-    for (int j = 0 ; j < column2 ; j++){
-        cout << "element-[" << i << "][" << j << "] = " ;
-        cin >> matrix_2[i][j] ;
-      }
-  }
-  cout << "First matrix : " << endl ;
-  for (int i = 0 ; i < row1 ; i++){
-    for (int j = 0 ; j < column1 ; j++){
-        cout << matrix_1[i][j] ;
-    }
-    cout << endl ;
-  }
-  cout << "Second matrix : " << endl ;
-  for (int i = 0 ; i < row2 ; i++){
-    for (int j = 0 ; j < column2 ; j++){
-        cout << matrix_2[i][j] ;
-      }
-      cout << endl ;
-  }
-
-// Check if matrices can be compared (same dimensions)
-    if (row1 == row2 && column1 == column2)
-    {
-        cout << "The matrices can be compared." << endl;
-
-        // Check if matrices are equal
-        bool areEqual = true;
-        for (int i = 0; i < row1; i++)
-        {
-            for (int j = 0; j < column1; j++)
-            {
-                if (matrix_1[i][j] != matrix_2[i][j])
-                {
-                    areEqual = false;
-                    break;
-                }
+int main() {
+  int i , j ;
+  int min = 100000000 ;
+  int max = 0;
+  int matrix[3][3] = {{ 1 , 0 , 0 },
+                      { 0 , 1 , 0 },
+                      { 40 , 0 , 1 }} ;
+   bool isidentity  ;
+      for (i = 0 ; i <= 2 ; i++) {
+        for (j = 0 ; j <= 2 ; j++){
+            if(min > matrix[i][j]){
+                min = matrix[i][j] ;
+            }
+            else if(max < matrix[i][j]){
+                max = matrix[i][j];
+            }
+            }
+            if(i==j && matrix[i][j] == 1 && i!=j && matrix[i][j] == 0 ){
+                    isidentity = false ;
+            }else{
+                    isidentity = true ;
             }
         }
-
-        if (areEqual)
-        {
-            cout << "The matrices are equal." << endl;
+        if(isidentity){
+        cout << "The Matrix[3][3] is a identity matrix ! " << endl ;
         }
-        else
-        {
-            cout << "The matrices are not equal." << endl;
+        else{
+        cout << "The matrix is not an identity matrix ! " << endl ;
         }
+        cout << "Minimum from the matrix : " << min << endl ;
+        cout << "Maximum from the matrix : " << max ;
 
-        // Perform addition of matrices
-        int sumMatrix[row1][column1];
-        cout << "Sum of the matrices: " << endl;
-        for (int i = 0; i < row1; i++)
-        {
-            for (int j = 0; j < column1; j++)
-            {
-                sumMatrix[i][j] = matrix_1[i][j] + matrix_2[i][j];
-                cout << sumMatrix[i][j] << " ";
-            }
-            cout << endl;
-        }
-    }
-    else
-    {
-        cout << "The matrices cannot be compared or added because their dimensions are different." << endl;
-    }
-
-    return 0;
-}
+        return 0 ;
+      }
